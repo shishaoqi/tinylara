@@ -1,0 +1,14 @@
+{
+    "name": "shishao/tinycontainer",
+    "description": "my tiny container",
+    "type": "libraly",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "shishao",
+            "email": "shishaoqi0928@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {"php": ">=5.5.0"}
+}
