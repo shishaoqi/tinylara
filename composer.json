@@ -1,0 +1,19 @@
+{
+	"require":{
+        "noahbuscher/macaw": "dev-master",
+        "illuminate/database": "*",
+        "filp/whoops": "*"
+	},
+    "autoload": {
+        "classmap": [
+            "app/controllers",
+            "app/models",
+            "services"
+        ],
+
+        "psr-4": {
+            "shishao\\Container\\": "vendor/tinycontainer/src/container",
+            "shishao\\Contracts\\": "vendor/tinycontainer/src/contracts"
+        }
+    }
+}
