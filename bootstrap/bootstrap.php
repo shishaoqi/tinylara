@@ -1,5 +1,6 @@
 <?php
-use Illuminate\Database\Capsule\Manager as Capsule;
+
+define('TINYLARA_START', microtime(true));
 
 // 定义 BASE_PATH
 define('BASE_PATH', dirname(__DIR__));
@@ -8,7 +9,7 @@ define('BASE_PATH', dirname(__DIR__));
 require BASE_PATH.'/vendor/autoload.php';
 
 // Eloquent ORM
-$capsule = new Capsule;
+$capsule = new Illuminate\Database\Capsule\Manager;
 $capsule->addConnection(require BASE_PATH.'/config/database.php');
 $capsule->bootEloquent();
 
@@ -16,3 +17,8 @@ $capsule->bootEloquent();
 $whoops = new \Whoops\Run;
 $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
 $whoops->register();
+
+$app = new shishao\Foundation\Application( realpath(__DIR__.'/../') );
+//dd($app['app']);
+dd($app->app);
+dd($app);

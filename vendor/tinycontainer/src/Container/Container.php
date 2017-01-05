@@ -376,6 +376,27 @@ class Container implements ArrayAccess, ContainerContract
 
     //--------------------------------------- extend ---------------------------------------------
     /**
+     * Set the globally available instance of the container.
+     *
+     * @return static
+     */
+    public static function getInstance()
+    {
+        return static::$instance;
+    }
+
+    /**
+     * Set the shared instance of the container.
+     *
+     * @param  \Illuminate\Contracts\Container\Container  $container
+     * @return void
+     */
+    public static function setInstance(ContainerContract $container)
+    {
+        static::$instance = $container;
+    }
+
+    /**
      * Instantiate a concrete instance of the given type.
      *
      * @param  string  $concrete
@@ -648,7 +669,7 @@ class Container implements ArrayAccess, ContainerContract
     }
 
 
-    //-------------------------------------------------------------------------------------------------------
+    //-------------------------------------------common function------------------------------------------------------------
 
     /**
      * Normalize the given class name by removing leading slashes.
@@ -659,6 +680,21 @@ class Container implements ArrayAccess, ContainerContract
     protected function normalize($service)
     {
         return is_string($service) ? ltrim($service, '\\') : $service;
+    }
+
+    /**
+     * Get the alias for an abstract if available.
+     *
+     * @param  string  $abstract
+     * @return string
+     */
+    protected function getAlias($abstract)
+    {
+        if (! isset($this->aliases[$abstract])) {
+            return $abstract;
+        }
+
+        return $this->getAlias($this->aliases[$abstract]);
     }
 
     /**

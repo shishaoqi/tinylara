@@ -12,8 +12,9 @@
         ],
 
         "psr-4": {
-            "shishao\\Container\\": "vendor/tinycontainer/src/container",
-            "shishao\\Contracts\\": "vendor/tinycontainer/src/contracts"
+            "shishao\\Container\\": "vendor/tinycontainer/src/Container",
+            "shishao\\Contracts\\": "vendor/tinycontainer/src/Contracts",
+            "shishao\\Foundation\\": "vendor/tinycontainer/src/Foundation"
         }
     }
 }
